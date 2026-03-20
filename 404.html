@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>404 | Alessandro Carboni</title>
+    <meta name="theme-color" content="#090b14" />
+    <style>
+      :root {
+        --bg: #090b14;
+        --bg-soft: #0f1320;
+        --text: #eef2ff;
+        --text-soft: #b3bdd3;
+        --cyan: #61e7ff;
+        --violet: #8b7cff;
+        --line: rgba(174, 190, 255, 0.12);
+      }
+
+      * { box-sizing: border-box; }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        display: grid;
+        place-items: center;
+        background:
+          radial-gradient(circle at top left, rgba(97, 231, 255, 0.08), transparent 26%),
+          radial-gradient(circle at 85% 10%, rgba(139, 124, 255, 0.12), transparent 22%),
+          linear-gradient(180deg, #080b13 0%, #0b1020 36%, #090b14 100%);
+        color: var(--text);
+        font-family: Inter, Arial, sans-serif;
+        padding: 24px;
+      }
+
+      .card {
+        width: min(720px, 100%);
+        border: 1px solid var(--line);
+        border-radius: 28px;
+        background: rgba(15, 21, 36, 0.72);
+        backdrop-filter: blur(16px);
+        box-shadow: 0 24px 80px rgba(0, 0, 0, 0.45);
+        padding: 32px;
+      }
+
+      .eyebrow {
+        display: inline-flex;
+        padding: 10px 14px;
+        border-radius: 999px;
+        font-size: 12px;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        font-weight: 700;
+        color: var(--cyan);
+        border: 1px solid rgba(97, 231, 255, 0.18);
+        background: rgba(97, 231, 255, 0.06);
+      }
+
+      h1 {
+        margin: 18px 0 12px;
+        font-size: clamp(2rem, 5vw, 3.8rem);
+        line-height: 1;
+        letter-spacing: -0.05em;
+      }
+
+      p {
+        margin: 0 0 22px;
+        color: var(--text-soft);
+        line-height: 1.75;
+      }
+
+      .actions {
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+      }
+
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+
+      .btn {
+        border-radius: 999px;
+        padding: 14px 20px;
+        font-weight: 700;
+      }
+
+      .btn-primary {
+        color: #071019;
+        background: linear-gradient(135deg, var(--cyan), #aaf0ff);
+      }
+
+      .btn-secondary {
+        color: var(--text);
+        background: rgba(255,255,255,0.03);
+        border: 1px solid var(--line);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="card">
+      <span class="eyebrow">404 / Not Found</span>
+      <h1>That path does not exist.</h1>
+      <p>
+        The page you tried to open is not available. Go back to the main portfolio and continue browsing.
+      </p>
+      <div class="actions">
+        <a class="btn btn-primary" href="/">Return home</a>
+        <a class="btn btn-secondary" href="https://github.com/alessandro-carboni" target="_blank" rel="noreferrer">Open GitHub</a>
+      </div>
+    </div>
+  </body>
+</html>
