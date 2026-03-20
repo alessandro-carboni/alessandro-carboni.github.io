@@ -1,9 +1,9 @@
 export const navItems = [
   { id: 'home', label: 'Home' },
-  { id: 'projects', label: 'Projects' },
   { id: 'about', label: 'About' },
-  { id: 'skills', label: 'Expertise' },
+  { id: 'projects', label: 'Projects' },
   { id: 'writeups', label: 'CTF Writeups' },
+  { id: 'skills', label: 'Expertise' },
   { id: 'connect', label: 'Connect' },
 ]
 

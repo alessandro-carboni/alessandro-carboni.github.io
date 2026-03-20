@@ -5,7 +5,6 @@ import Hero from './components/Hero'
 import AboutSection from './components/AboutSection'
 import SkillsSection from './components/SkillsSection'
 import HorizontalScrollSection from './components/HorizontalScrollSection'
-import AchievementsSection from './components/AchievementsSection'
 import ProjectSection from './components/ProjectSection'
 import ContactSection from './components/ContactSection'
 import Footer from './components/Footer'
@@ -157,11 +156,10 @@ export default function App() {
           onPrimaryClick={() => scrollToSection('writeups')}
           onSecondaryClick={() => scrollToSection('projects')}
         />
-        <ProjectSection />
         <AboutSection />
-        <SkillsSection />
+        <ProjectSection />
         <HorizontalScrollSection />
-        <AchievementsSection />
+        <SkillsSection />
         <ContactSection />
       </main>
 
