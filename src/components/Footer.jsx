@@ -1,15 +1,7 @@
-import { FaArrowUp, FaFileAlt, FaShieldAlt, FaTerminal, FaDownload } from 'react-icons/fa'
+import { FaArrowUp, FaFileAlt, FaShieldAlt, FaDownload } from 'react-icons/fa'
 import { footerReferences } from '../data/portfolioData'
-import { useTypewriter } from '../hooks/useTypewriter'
 
 export default function Footer() {
-  const typedTitle = useTypewriter(
-    ['Closing Signal', 'Final Section', 'End of Transmission'],
-    60,
-    30,
-    1200,
-  )
-
   const scrollTop = () => {
     window.scrollTo({
       top: 0,
@@ -27,16 +19,9 @@ export default function Footer() {
       </div>
 
       <div className="section-shell footer-shell">
-        <div className="footer-top glass-card" data-reveal>
+        <div className="footer-top glass-card">
           <div className="footer-top__intro">
             <span className="section-eyebrow">Final Note</span>
-
-            <div className="footer-terminal-line">
-              <span className="footer-terminal-line__prompt">$</span>
-              <span className="footer-terminal-line__typed">{typedTitle}</span>
-              <span className="footer-terminal-line__cursor" />
-            </div>
-
             <h2>Built to leave a precise final impression.</h2>
             <p>
               This portfolio is designed to communicate technical credibility, hands-on security
@@ -63,7 +48,7 @@ export default function Footer() {
         </div>
 
         <div className="footer-grid">
-          <article className="glass-card footer-card" data-reveal>
+          <article className="glass-card footer-card">
             <div className="footer-card__icon">
               <FaShieldAlt />
             </div>
@@ -74,18 +59,7 @@ export default function Footer() {
             </p>
           </article>
 
-          <article className="glass-card footer-card" data-reveal>
-            <div className="footer-card__icon">
-              <FaTerminal />
-            </div>
-            <h3>Reading Experience</h3>
-            <p>
-              Smooth flow, calm motion, subtle interaction, and progressive storytelling without
-              compromising clarity or seriousness.
-            </p>
-          </article>
-
-          <article className="glass-card footer-card" data-reveal>
+          <article className="glass-card footer-card">
             <div className="footer-card__icon">
               <FaFileAlt />
             </div>
@@ -95,16 +69,22 @@ export default function Footer() {
               technical references tied to actual work.
             </p>
           </article>
+
+          <article className="glass-card footer-card">
+            <div className="footer-card__icon">
+              <FaDownload />
+            </div>
+            <h3>Quick Access</h3>
+            <p>
+              Keep the CV, project overview, and contact paths immediately reachable without breaking
+              the final visual flow of the page.
+            </p>
+          </article>
         </div>
 
         <div className="footer-references">
-          {footerReferences.map((group, index) => (
-            <div
-              className="glass-card footer-reference-card"
-              key={group.title}
-              data-reveal
-              style={{ transitionDelay: `${index * 90}ms` }}
-            >
+          {footerReferences.map((group) => (
+            <div className="glass-card footer-reference-card" key={group.title}>
               <h4>{group.title}</h4>
               <ul>
                 {group.items.map((item) => (
@@ -115,9 +95,9 @@ export default function Footer() {
           ))}
         </div>
 
-        <div className="footer-bottom" data-reveal>
+        <div className="footer-bottom">
           <span>Alessandro Carboni — Cybersecurity Portfolio</span>
-          <span>Built with React, motion, and a security-first design language.</span>
+          <span>Built with React and a security-first design language.</span>
         </div>
       </div>
     </footer>

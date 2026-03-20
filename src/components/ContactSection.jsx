@@ -1,4 +1,4 @@
-import { FaEnvelope, FaGithub, FaLinkedin } from 'react-icons/fa'
+import { FaEnvelope, FaGithub, FaLinkedin, FaInstagram, FaFacebook, FaPhone } from 'react-icons/fa'
 import { FaArrowUpRightFromSquare } from 'react-icons/fa6'
 import { connectLinks } from '../data/portfolioData'
 import SectionTitle from './SectionTitle'
@@ -6,6 +6,9 @@ import SectionTitle from './SectionTitle'
 function Icon({ kind }) {
   if (kind === 'github') return <FaGithub />
   if (kind === 'linkedin') return <FaLinkedin />
+  if (kind === 'instagram') return <FaInstagram />
+  if (kind === 'facebook') return <FaFacebook />
+  if (kind === 'phone') return <FaPhone />
   return <FaEnvelope />
 }
 
@@ -17,14 +20,11 @@ export default function ContactSection() {
           eyebrow="Connect"
           title="A dedicated contact zone — not a forgotten footer."
           text="This part is intentionally near the end, but still visually prominent. The idea is to keep the site focused on technical credibility first, then make contact paths clean and obvious."
-          terminal
-          terminalLabel="open.channels"
         />
 
-        <div className="connect-intro glass-card" data-reveal>
-          <span className="panel-terminal-line__prompt">$</span>
+        <div className="connect-intro glass-card">
           <span className="connect-intro__text">
-            Available for internships, research collaborations, and junior cybersecurity opportunities.
+            Available for internships, research collaborations, and cybersecurity opportunities.
           </span>
         </div>
 
@@ -34,10 +34,9 @@ export default function ContactSection() {
               key={link.label}
               className="glass-card social-card"
               href={link.href}
-              target={link.kind === 'mail' ? '_self' : '_blank'}
+              target={link.kind === 'mail' || link.kind === 'phone' ? '_self' : '_blank'}
               rel="noreferrer"
-              data-reveal
-              style={{ transitionDelay: `${index * 80}ms` }}
+              style={{ transitionDelay: `${index * 60}ms` }}
             >
               <span className="social-icon">
                 <Icon kind={link.kind} />

@@ -9,51 +9,41 @@ export default function ProjectSection() {
         <SectionTitle
           eyebrow="Projects"
           title="Built to demonstrate process, not just interest."
-          text="Each project is framed as evidence of reasoning: analysis depth, experimentation, structured design, or the ability to move from idea to implementation."
-          terminal
-          terminalLabel="enumerate.projects"
+          text="Projects are also browsed horizontally to keep the reading rhythm consistent with the rest of the portfolio."
         />
 
-        <div className="projects-grid">
-          {projects.map((project, index) => (
-            <article
-              className="glass-card project-card"
-              key={project.title}
-              data-reveal
-              style={{ transitionDelay: `${index * 70}ms` }}
-            >
-              <div className="project-card__header">
-                <span className="project-line" />
-                <span className="project-subtitle">{project.subtitle}</span>
-              </div>
+        <div className="project-scroller-shell glass-card">
+          <div className="project-scroller">
+            {projects.map((project) => (
+              <article className="glass-card project-card project-card--scroller" key={project.title}>
+                <div className="project-card__header">
+                  <span className="project-line" />
+                  <span className="project-subtitle">{project.subtitle}</span>
+                </div>
 
-              <div className="project-card__title-row">
-                <span className="project-card__icon">
-                  <FaLaptopCode />
-                </span>
-                <h3>{project.title}</h3>
-              </div>
-
-              <div className="card-terminal-chip">
-                <span>&gt;</span>
-                <span>status: documented</span>
-              </div>
-
-              <p>{project.description}</p>
-
-              <div className="tag-cloud">
-                {project.tags.map((tag) => (
-                  <span className="tag" key={tag}>
-                    {tag}
+                <div className="project-card__title-row">
+                  <span className="project-card__icon">
+                    <FaLaptopCode />
                   </span>
-                ))}
-              </div>
+                  <h3>{project.title}</h3>
+                </div>
 
-              <a href={project.link} target="_blank" rel="noreferrer" className="text-link project-card__fake-link">
-                Explore project <FaArrowRight />
-              </a>
-            </article>
-          ))}
+                <p>{project.description}</p>
+
+                <div className="tag-cloud">
+                  {project.tags.map((tag) => (
+                    <span className="tag" key={tag}>
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+
+                <a href={project.link} target="_blank" rel="noreferrer" className="text-link project-card__fake-link">
+                  Explore project <FaArrowRight />
+                </a>
+              </article>
+            ))}
+          </div>
         </div>
       </div>
     </section>

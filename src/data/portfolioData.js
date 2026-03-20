@@ -1,9 +1,9 @@
 export const navItems = [
   { id: 'home', label: 'Home' },
+  { id: 'projects', label: 'Projects' },
   { id: 'about', label: 'About' },
   { id: 'skills', label: 'Expertise' },
   { id: 'writeups', label: 'CTF Writeups' },
-  { id: 'projects', label: 'Projects' },
   { id: 'connect', label: 'Connect' },
 ]
 
@@ -30,7 +30,7 @@ export const aboutHighlights = [
   },
   {
     title: 'Academic background',
-    text: 'Master’s Degree in Cybersecurity at Sapienza University of Rome, Bachelor’s Degree in Computer Science at University of Perugia, Erasmus experience at Universitat de Barcelona.',
+    text: "Master's Degree in Cybersecurity at Sapienza University of Rome, Bachelor's Degree in Computer Science at University of Perugia, Erasmus experience at Universitat de Barcelona.",
   },
   {
     title: 'Hands-on practice',
@@ -141,55 +141,67 @@ export const projects = [
   {
     title: 'Fuzz Triage Pipeline',
     subtitle: 'Coverage-guided fuzzing & crash triage',
-    description:
-      'A practical pipeline to collect crashes, deduplicate them, and prioritize security-relevant paths for deeper analysis.',
+    description: 'A practical pipeline to collect crashes, deduplicate them, and prioritize security-relevant paths for deeper analysis.',
     tags: ['Fuzzing', 'Automation', 'Analysis'],
     link: '#',
   },
   {
     title: 'Ghidra Scripts Pack',
     subtitle: 'Reverse engineering automation with AI support',
-    description:
-      'A set of scripts aimed at speeding up reverse engineering tasks, pattern extraction, and repetitive analysis activities.',
+    description: 'A set of scripts aimed at speeding up reverse engineering tasks, pattern extraction, and repetitive analysis activities.',
     tags: ['Ghidra', 'Reverse Engineering', 'Automation'],
     link: '#',
   },
   {
     title: 'CTF VM Development',
     subtitle: 'Exploit chains and privilege escalation paths',
-    description:
-      'Creation of intentionally vulnerable environments designed to teach exploitation logic, chaining, and realistic post-exploitation reasoning.',
+    description: 'Creation of intentionally vulnerable environments designed to teach exploitation logic, chaining, and realistic post-exploitation reasoning.',
     tags: ['CTF', 'PrivEsc', 'Lab Design'],
     link: '#',
   },
   {
     title: 'Cloud Misconfiguration Lab',
     subtitle: 'Attack & detection',
-    description:
-      'Security lab focused on cloud exposure, weak permissions, and the balance between attack simulation and detection opportunities.',
+    description: 'Security lab focused on cloud exposure, weak permissions, and the balance between attack simulation and detection opportunities.',
     tags: ['Cloud', 'Detection', 'Security'],
     link: '#',
   },
   {
     title: 'Threat Modeling Lab',
     subtitle: 'STRIDE methodology',
-    description:
-      'A structured lab for identifying assets, trust boundaries, and threats, then translating them into technical mitigations.',
+    description: 'A structured lab for identifying assets, trust boundaries, and threats, then translating them into technical mitigations.',
     tags: ['Threat Modeling', 'STRIDE', 'Architecture'],
     link: '#',
   },
   {
     title: 'Secure File Sharing Protocol',
     subtitle: 'Distributed Systems project',
-    description:
-      'Protocol-oriented project exploring communication, reliability, and secure exchange in a distributed setting.',
+    description: 'Protocol-oriented project exploring communication, reliability, and secure exchange in a distributed setting.',
     tags: ['Distributed Systems', 'Protocols', 'Secure Design'],
     link: '#',
   },
+  {
+    title: 'Malware Analysis Sandbox',
+    subtitle: 'Static and dynamic triage',
+    description: 'A fake but plausible project layout focused on safe sample execution, behavioral logging, and structured malware triage notes.',
+    tags: ['Malware Analysis', 'Sandbox', 'Triage'],
+    link: '#',
+  },
+  {
+    title: 'SOC Detection Ruleset',
+    subtitle: 'Detection engineering practice',
+    description: 'Fictitious but realistic ruleset design for suspicious authentication flows, endpoint anomalies, and network-based indicators.',
+    tags: ['SOC', 'Detection', 'Blue Team'],
+    link: '#',
+  },
+  {
+    title: 'Web Exploitation Lab',
+    subtitle: 'Purpose-built vulnerable targets',
+    description: 'A controlled practice environment for testing auth flaws, injection paths, logic abuse, and multi-step exploitation workflows.',
+    tags: ['Web Security', 'Lab', 'Offensive'],
+    link: '#',
+  },
 ]
-
-export const featuredWriteup = writeups[1]
-export const featuredProject = projects[0]
 
 export const achievements = [
   {
@@ -228,6 +240,24 @@ export const connectLinks = [
     href: 'mailto:alessandro.carboni.7@gmail.com',
     value: 'alessandro.carboni.7@gmail.com',
     kind: 'mail',
+  },
+  {
+    label: 'Phone',
+    href: 'tel:+390000000000',
+    value: '+39 000 000 0000',
+    kind: 'phone',
+  },
+  {
+    label: 'Instagram',
+    href: 'https://instagram.com/your_username_here',
+    value: 'instagram.com/your_username_here',
+    kind: 'instagram',
+  },
+  {
+    label: 'Facebook',
+    href: 'https://facebook.com/your_profile_here',
+    value: 'facebook.com/your_profile_here',
+    kind: 'facebook',
   },
 ]
 
