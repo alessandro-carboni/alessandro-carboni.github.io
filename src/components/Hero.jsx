@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef } from 'react'
 import {
   FaArrowRight,
   FaShieldAlt,
@@ -17,21 +17,10 @@ const terminalCommands = [
   'pwsh> gc .\\profile.info',
 ]
 
-const TYPE_BASE = 28
-const TYPE_PER_CHAR = 0.6
-const DELETE_BASE = 16
-const DELETE_PER_CHAR = 0.35
-const HOLD_BASE = 850
-const HOLD_PER_CHAR = 8
-
 export default function Hero({ onPrimaryClick, onSecondaryClick }) {
   const typedRole = useTypewriter(rotatingRoles, 50, 22, 950)
-  const [commandIndex, setCommandIndex] = useState(0)
-  const [displayCommand, setDisplayCommand] = useState('')
-  const [isDeleting, setIsDeleting] = useState(false)
+  const typedCommand = useTypewriter(terminalCommands, 42, 24, 1050)
   const rootRef = useRef(null)
-  const measureRef = useRef(null)
-  const [commandWidth, setCommandWidth] = useState(null)
 
   const heroChips = [
     { label: 'Exploit Research', icon: <FaBug /> },
@@ -39,45 +28,6 @@ export default function Hero({ onPrimaryClick, onSecondaryClick }) {
     { label: 'Writeups', icon: <FaShieldAlt /> },
     { label: 'Reverse Engineering', icon: <FaUserSecret /> },
   ]
-
-  useEffect(() => {
-    const current = terminalCommands[commandIndex]
-    const typeDelay = Math.max(TYPE_BASE, TYPE_BASE + current.length * TYPE_PER_CHAR)
-    const deleteDelay = Math.max(DELETE_BASE, DELETE_BASE + current.length * DELETE_PER_CHAR)
-    const holdDelay = HOLD_BASE + current.length * HOLD_PER_CHAR
-
-    let timeout
-
-    if (!isDeleting && displayCommand.length < current.length) {
-      timeout = setTimeout(() => {
-        setDisplayCommand(current.slice(0, displayCommand.length + 1))
-      }, typeDelay)
-    } else if (!isDeleting && displayCommand.length === current.length) {
-      timeout = setTimeout(() => {
-        setIsDeleting(true)
-      }, holdDelay)
-    } else if (isDeleting && displayCommand.length > 0) {
-      timeout = setTimeout(() => {
-        setDisplayCommand(current.slice(0, displayCommand.length - 1))
-      }, deleteDelay)
-    } else if (isDeleting && displayCommand.length === 0) {
-      timeout = setTimeout(() => {
-        setIsDeleting(false)
-        setCommandIndex((prev) => (prev + 1) % terminalCommands.length)
-      }, 140)
-    }
-
-    return () => clearTimeout(timeout)
-  }, [displayCommand, isDeleting, commandIndex])
-
-  useEffect(() => {
-    const measureNode = measureRef.current
-    if (!measureNode) return
-
-    measureNode.textContent = terminalCommands[commandIndex]
-    const width = Math.ceil(measureNode.getBoundingClientRect().width)
-    setCommandWidth(width)
-  }, [commandIndex])
 
   useEffect(() => {
     const root = rootRef.current
@@ -183,15 +133,9 @@ export default function Hero({ onPrimaryClick, onSecondaryClick }) {
         </div>
 
         <div className="hero-panel glass-card hero-panel--parallax">
-          <div
-            className="hero-command"
-            style={commandWidth ? { width: `calc(${commandWidth}px + 38px)` } : undefined}
-          >
-            <span className="hero-command__content">
-              <span className="hero-command__text">{displayCommand}</span>
-              <span className="hero-command__cursor" />
-            </span>
-            <span className="hero-command__measure" ref={measureRef} aria-hidden="true" />
+          <div className="hero-shell-mini">
+            <span className="hero-shell-mini__text">{typedCommand}</span>
+            <span className="hero-shell-mini__cursor" />
           </div>
 
           <div className="hero-profile">
