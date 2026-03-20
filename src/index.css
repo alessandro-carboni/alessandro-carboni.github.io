@@ -4071,3 +4071,43 @@ body::-webkit-scrollbar {
   animation: blink 0.9s infinite;
   flex-shrink: 0;
 }
+
+/* ===== LIGHT REVEAL BETWEEN SECTIONS ===== */
+
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(28px);
+  transition:
+    opacity 700ms ease,
+    transform 700ms cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+
+.reveal-on-scroll.is-revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* hero leggermente più reattiva */
+.hero-copy.reveal-on-scroll {
+  transition-delay: 40ms;
+}
+
+.hero-panel.reveal-on-scroll {
+  transition-delay: 110ms;
+}
+
+/* animazione un pelo più delicata per sezioni lunghe */
+.section-shell.reveal-on-scroll,
+.footer-shell.reveal-on-scroll {
+  transition-duration: 760ms;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal-on-scroll,
+  .reveal-on-scroll.is-revealed {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}

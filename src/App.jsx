@@ -60,6 +60,35 @@ export default function App() {
     return () => activeObserver.disconnect()
   }, [sectionIds])
 
+  useEffect(() => {
+    const revealTargets = document.querySelectorAll(
+      '.hero-copy, .hero-panel, .section-shell, .footer-shell'
+    )
+
+    revealTargets.forEach((node) => {
+      node.classList.add('reveal-on-scroll')
+    })
+
+    const revealObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-revealed')
+            revealObserver.unobserve(entry.target)
+          }
+        })
+      },
+      {
+        threshold: 0.12,
+        rootMargin: '0px 0px -8% 0px',
+      }
+    )
+
+    revealTargets.forEach((node) => revealObserver.observe(node))
+
+    return () => revealObserver.disconnect()
+  }, [])
+
   const scrollToSection = (id) => {
     const section = document.getElementById(id)
     if (!section) return

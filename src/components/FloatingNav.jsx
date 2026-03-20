@@ -1,10 +1,11 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useLayoutEffect, useRef, useState } from 'react'
 import { FaMoon, FaSun } from 'react-icons/fa'
 
 export default function FloatingNav({ items, activeId, onSelect, theme, onToggleTheme }) {
   const navRef = useRef(null)
   const itemRefs = useRef({})
   const settleTimeoutRef = useRef(null)
+  const previousActiveIdRef = useRef(activeId)
   const latestTargetRef = useRef(activeId)
   const isStretchingRef = useRef(false)
 
@@ -16,55 +17,12 @@ export default function FloatingNav({ items, activeId, onSelect, theme, onToggle
     transform: 'scaleX(1)',
   })
 
-  const getNavBounds = () => {
-    const nav = navRef.current
-    if (!nav) return null
-
-    const children = items
-      .map((item) => itemRefs.current[item.id])
-      .filter(Boolean)
-
-    if (!children.length) return null
-
-    const first = children[0]
-    const last = children[children.length - 1]
-
-    return {
-      minLeft: first.offsetLeft,
-      maxRight: last.offsetLeft + last.offsetWidth,
-    }
-  }
-
-  const clampStretch = (left, width) => {
-    const bounds = getNavBounds()
-    if (!bounds) {
-      return { left, width }
-    }
-
-    let nextLeft = left
-    let nextRight = left + width
-
-    if (nextLeft < bounds.minLeft) {
-      nextLeft = bounds.minLeft
-    }
-
-    if (nextRight > bounds.maxRight) {
-      nextRight = bounds.maxRight
-    }
-
-    const nextWidth = Math.max(nextRight - nextLeft, 0)
-
-    return {
-      left: nextLeft,
-      width: nextWidth,
-    }
-  }
-
   const getItemMetrics = (id) => {
     const node = itemRefs.current[id]
     if (!node) return null
 
     return {
+      id,
       left: node.offsetLeft,
       width: node.offsetWidth,
       right: node.offsetLeft + node.offsetWidth,
@@ -72,44 +30,102 @@ export default function FloatingNav({ items, activeId, onSelect, theme, onToggle
     }
   }
 
+  const getItemIndex = (id) => items.findIndex((item) => item.id === id)
+
+  const moveIndicatorTo = (id) => {
+    const target = getItemMetrics(id)
+    if (!target) return
+
+    setIndicatorStyle({
+      left: target.left,
+      width: target.width,
+      opacity: 1,
+      borderRadius: 999,
+      transform: 'scaleX(1)',
+    })
+  }
+
+  const getRangeMetrics = (fromId, toId) => {
+    const fromIndex = getItemIndex(fromId)
+    const toIndex = getItemIndex(toId)
+
+    if (fromIndex === -1 || toIndex === -1) return null
+
+    const start = Math.min(fromIndex, toIndex)
+    const end = Math.max(fromIndex, toIndex)
+
+    const involvedMetrics = items
+      .slice(start, end + 1)
+      .map((item) => getItemMetrics(item.id))
+      .filter(Boolean)
+
+    if (!involvedMetrics.length) return null
+
+    const left = Math.min(...involvedMetrics.map((m) => m.left))
+    const right = Math.max(...involvedMetrics.map((m) => m.right))
+
+    return {
+      left,
+      width: right - left,
+      right,
+    }
+  }
+
+  useLayoutEffect(() => {
+    const target = getItemMetrics(activeId)
+    if (!target) return
+
+    latestTargetRef.current = activeId
+    previousActiveIdRef.current = activeId
+
+    setIndicatorStyle({
+      left: target.left,
+      width: target.width,
+      opacity: 1,
+      borderRadius: 999,
+      transform: 'scaleX(1)',
+    })
+  }, [items])
+
   useEffect(() => {
     const target = getItemMetrics(activeId)
     if (!target) return
 
     latestTargetRef.current = activeId
 
-    const currentLeft = indicatorStyle.opacity ? indicatorStyle.left : target.left
-    const currentWidth = indicatorStyle.opacity ? indicatorStyle.width : target.width
-    const currentRight = currentLeft + currentWidth
-    const currentCenter = currentLeft + currentWidth / 2
+    const previousId = previousActiveIdRef.current
+    const previousTarget = getItemMetrics(previousId)
 
-    const movingRight = target.center > currentCenter
-    const distance = Math.abs(target.center - currentCenter)
-    const stretchBoost = Math.min(30 + distance * 0.16, 110)
+    if (!previousTarget || previousId === activeId) {
+      moveIndicatorTo(activeId)
+      previousActiveIdRef.current = activeId
+      return
+    }
 
-    const rawStretchLeft = movingRight
-      ? currentLeft
-      : Math.min(target.left - stretchBoost, currentLeft)
-
-    const rawStretchRight = movingRight
-      ? Math.max(target.right + stretchBoost, currentRight)
-      : currentRight
-
-    const stretched = clampStretch(rawStretchLeft, rawStretchRight - rawStretchLeft)
+    const range = getRangeMetrics(previousId, activeId)
+    if (!range) {
+      moveIndicatorTo(activeId)
+      previousActiveIdRef.current = activeId
+      return
+    }
 
     isStretchingRef.current = true
 
     setIndicatorStyle({
-      left: stretched.left,
-      width: stretched.width,
+      left: range.left,
+      width: range.width,
       opacity: 1,
       borderRadius: 999,
-      transform: 'scaleX(1.02)',
+      transform: 'scaleX(1.015)',
     })
 
     if (settleTimeoutRef.current) {
       clearTimeout(settleTimeoutRef.current)
     }
+
+    const fromIndex = getItemIndex(previousId)
+    const toIndex = getItemIndex(activeId)
+    const jumpSize = Math.abs(toIndex - fromIndex)
 
     settleTimeoutRef.current = setTimeout(() => {
       const finalTarget = getItemMetrics(latestTargetRef.current)
@@ -124,38 +140,57 @@ export default function FloatingNav({ items, activeId, onSelect, theme, onToggle
         borderRadius: 999,
         transform: 'scaleX(1)',
       })
-    }, 210)
+
+      previousActiveIdRef.current = latestTargetRef.current
+    }, jumpSize >= 3 ? 240 : 200)
 
     return () => {
       if (settleTimeoutRef.current) {
         clearTimeout(settleTimeoutRef.current)
       }
     }
-  }, [activeId])
+  }, [activeId, items])
 
   useEffect(() => {
     const handleResize = () => {
-      const target = getItemMetrics(latestTargetRef.current)
+      if (settleTimeoutRef.current) {
+        clearTimeout(settleTimeoutRef.current)
+      }
+
+      const currentId = isStretchingRef.current ? latestTargetRef.current : activeId
+      const target = getItemMetrics(currentId)
       if (!target) return
 
-      setIndicatorStyle((prev) => ({
-        ...prev,
+      setIndicatorStyle({
         left: target.left,
         width: target.width,
         opacity: 1,
-        transform: isStretchingRef.current ? prev.transform : 'scaleX(1)',
-      }))
+        borderRadius: 999,
+        transform: 'scaleX(1)',
+      })
+
+      isStretchingRef.current = false
+      previousActiveIdRef.current = currentId
     }
 
     window.addEventListener('resize', handleResize)
-    return () => window.removeEventListener('resize', handleResize)
-  }, [])
+    return () => {
+      window.removeEventListener('resize', handleResize)
+
+      if (settleTimeoutRef.current) {
+        clearTimeout(settleTimeoutRef.current)
+      }
+    }
+  }, [activeId])
 
   return (
     <div className="floating-nav-wrap">
       <div className="floating-nav-shell">
         <nav className="floating-nav" aria-label="Primary" ref={navRef}>
-          <div className="floating-nav__indicator floating-nav__indicator--fluid" style={indicatorStyle} />
+          <div
+            className="floating-nav__indicator floating-nav__indicator--fluid"
+            style={indicatorStyle}
+          />
 
           {items.map((item) => (
             <button
