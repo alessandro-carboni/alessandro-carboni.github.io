@@ -85,7 +85,7 @@ export const writeups = [
     title: 'Hack The Box - Facts',
     type: 'Web / PrivEsc / Cloud',
     difficulty: 'Medium',
-    summary: 'Exploitation of a Web Page built on Camaleon CMS, credential extraction (CVE-2025-2304), AWS S3 pivoting (CVE-2026-1776), root privilege escalation via misconfigured files.',
+    summary: 'Exploitation of a Web Page built on Camaleon CMS | credential extraction (CVE-2025-2304) | AWS S3 pivoting (CVE-2026-1776) | root privilege escalation via misconfigured files',
     stack: ['Rails', 'Camaleon CMS', 'AWS S3', 'SQLite', 'Privilege Escalation'],
     category: ['Web', 'PrivEsc', 'Cloud', 'Medium'],
     link: 'https://drive.google.com/file/d/1jlsroWw1rxxCH_YC_SxrAAzJL_mie6LV/view?usp=sharing',
