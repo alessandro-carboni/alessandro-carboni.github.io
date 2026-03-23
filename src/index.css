@@ -4111,3 +4111,23 @@ body::-webkit-scrollbar {
     transition: none !important;
   }
 }
+
+.writeup-card__image {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+  margin-right: 10px;
+  border-radius: 6px;
+}
+
+.writeup-card--link,
+.project-card--link {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+
+.writeup-card--link:hover,
+.project-card--link:hover {
+  cursor: pointer;
+}

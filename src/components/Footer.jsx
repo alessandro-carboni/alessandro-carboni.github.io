@@ -22,10 +22,11 @@ export default function Footer() {
         <div className="footer-top glass-card">
           <div className="footer-top__intro">
             <span className="section-eyebrow">Final Note</span>
-            <h2>Built to leave a precise final impression.</h2>
+            <h2>Technical portfolio focused on real work.</h2>
             <p>
-              This portfolio is designed to communicate technical credibility, hands-on security
-              interest, and a clear growth direction across offensive and defensive cybersecurity.
+              This portfolio collects practical cybersecurity work, including CTF writeups,
+              exploitation chains, and projects related to web security, privilege escalation,
+              and low-level analysis.
             </p>
 
             <div className="footer-top__actions">
@@ -52,10 +53,10 @@ export default function Footer() {
             <div className="footer-card__icon">
               <FaShieldAlt />
             </div>
-            <h3>Portfolio Goal</h3>
+            <h3>Portfolio Content</h3>
             <p>
-              Present a professional cybersecurity profile with enough technical detail to be
-              credible, readable, and memorable.
+              Includes real exploitation paths, vulnerability analysis, and privilege escalation
+              techniques derived from hands-on labs and CTF challenges.
             </p>
           </article>
 
@@ -63,10 +64,10 @@ export default function Footer() {
             <div className="footer-card__icon">
               <FaFileAlt />
             </div>
-            <h3>What Comes Next</h3>
+            <h3>Writeups</h3>
             <p>
-              Real writeups, project pages, deeper case studies, downloadable CV, and stronger
-              technical references tied to actual work.
+              Each writeup documents the full attack chain: enumeration, vulnerability discovery,
+              exploitation, and post-exploitation steps with a focus on root cause analysis.
             </p>
           </article>
 
@@ -74,10 +75,10 @@ export default function Footer() {
             <div className="footer-card__icon">
               <FaDownload />
             </div>
-            <h3>Quick Access</h3>
+            <h3>Usage</h3>
             <p>
-              Keep the CV, project overview, and contact paths immediately reachable without breaking
-              the final visual flow of the page.
+              The page is structured to provide direct access to technical material and supporting
+              documentation without unnecessary navigation or filler content.
             </p>
           </article>
         </div>
@@ -97,7 +98,7 @@ export default function Footer() {
 
         <div className="footer-bottom">
           <span>Alessandro Carboni — Cybersecurity Portfolio</span>
-          <span>Built with React and a security-first design language.</span>
+          <span>Focused on practical security work and technical writeups.</span>
         </div>
       </div>
     </footer>

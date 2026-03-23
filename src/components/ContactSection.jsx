@@ -18,13 +18,13 @@ export default function ContactSection() {
       <div className="section-shell">
         <SectionTitle
           eyebrow="Connect"
-          title="A dedicated contact zone — not a forgotten footer."
-          text="This part is intentionally near the end, but still visually prominent. The idea is to keep the site focused on technical credibility first, then make contact paths clean and obvious."
+          title="Contact and professional links"
+          text="Direct contact information and external profiles related to projects, writeups, and technical work."
         />
 
         <div className="connect-intro glass-card">
           <span className="connect-intro__text">
-            Available for internships, research collaborations, and cybersecurity opportunities.
+            Open to internships, collaborations, and cybersecurity-related roles.
           </span>
         </div>
 

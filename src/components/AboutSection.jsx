@@ -10,15 +10,14 @@ export default function AboutSection() {
       <div className="section-shell">
         <SectionTitle
           eyebrow="Profile"
-          title="Professional signal first. Technical depth right after."
-          text="The opening experience is designed to communicate seriousness, clarity, and a real hands-on security background before the viewer even starts scrolling into the details."
+          title="A Breef Introduction"
         />
 
         <div className="story-lead glass-card">
           <div className="story-lead__line" />
           <p>
-            This portfolio is built as a guided read: immediate credibility first, technical detail second,
-            and evidence of hands-on work throughout the scroll.
+            The portfolio highlights practical work including writeups, labs, and projects that
+            demonstrate vulnerability analysis, exploitation techniques, and system-level understanding.
           </p>
         </div>
 

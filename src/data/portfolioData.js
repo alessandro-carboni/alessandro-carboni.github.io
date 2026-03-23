@@ -59,22 +59,22 @@ export const skillGroups = [
 
 export const experienceTimeline = [
   {
+    year: 'Now',
+    title: 'Cybersecurity Student & Builder',
+    company: 'Personal portfolio / labs / CTF',
+    text: 'Building security labs, experimenting with exploit chains, writing tooling, and documenting technical work with a strong learning-by-doing approach.',
+  },
+  {
     year: '2024',
     title: 'IT & Cybersecurity Intern',
-    company: 'Angelantoni Industrie',
+    company: 'Angelantoni Industrie, Massa Martana',
     text: 'Exposure to enterprise IT operations, infrastructure management, security workflows, threat analysis, and system protection practices.',
   },
   {
     year: '2021',
     title: 'ICT Network Technician Internship',
-    company: 'Dimensione Impresa SRL',
+    company: 'Dimensione Impresa SRL, Todi',
     text: 'Worked on technical support, troubleshooting, workflow optimization, and security measures for networks and internal systems.',
-  },
-  {
-    year: 'Now',
-    title: 'Cybersecurity Student & Builder',
-    company: 'Personal portfolio / labs / CTF',
-    text: 'Building security labs, experimenting with exploit chains, writing tooling, and documenting technical work with a strong learning-by-doing approach.',
   },
 ]
 
@@ -82,58 +82,14 @@ export const writeupFilters = ['All', 'Web', 'Pwn', 'Reverse', 'Cloud', 'PrivEsc
 
 export const writeups = [
   {
-    title: 'Forged Trust',
-    type: 'Web / Auth',
+    title: 'Facts',
+    type: 'Web / PrivEsc / Cloud',
     difficulty: 'Medium',
-    summary: 'Token logic abuse and trust-boundary mistakes leading to privilege escalation in a deliberately vulnerable web flow.',
-    stack: ['Web Security', 'Session Logic', 'Auth'],
-    category: ['Web', 'Medium'],
-    link: '#',
-  },
-  {
-    title: 'Temporal Jump',
-    type: 'Linux / PrivEsc',
-    difficulty: 'Hard',
-    summary: 'Privilege escalation through insecure library loading, SUID behavior, and low-level debugging of execution flow.',
-    stack: ['PrivEsc', 'Linux', 'GDB'],
-    category: ['PrivEsc', 'Hard'],
-    link: '#',
-  },
-  {
-    title: 'View Parameter',
-    type: 'Web / LFI',
-    difficulty: 'Medium',
-    summary: 'Enumeration, user discovery, file access logic, and chained exploitation inside a constrained file retrieval mechanism.',
-    stack: ['LFI', 'Recon', 'Web'],
-    category: ['Web', 'Medium'],
-    link: '#',
-  },
-  {
-    title: 'Crash Surface',
-    type: 'Pwn / Fuzzing',
-    difficulty: 'Hard',
-    summary: 'Coverage-guided fuzzing workflow to isolate crashes, reduce noise, and reason about exploitability in native code targets.',
-    stack: ['Fuzzing', 'Native', 'Triage'],
-    category: ['Pwn', 'Hard'],
-    link: '#',
-  },
-  {
-    title: 'Cloud Drift',
-    type: 'Cloud / Detection',
-    difficulty: 'Medium',
-    summary: 'Misconfiguration detection and attack-path analysis across exposed services, permissions, and monitoring blind spots.',
-    stack: ['Cloud', 'Misconfig', 'Detection'],
-    category: ['Cloud', 'Medium'],
-    link: '#',
-  },
-  {
-    title: 'Thin Wrapper',
-    type: 'Reverse Engineering',
-    difficulty: 'Medium',
-    summary: 'Static and dynamic analysis of wrapper binaries to identify hidden trust assumptions and execution pivots.',
-    stack: ['RE', 'Ghidra', 'Dynamic Analysis'],
-    category: ['Reverse', 'Medium'],
-    link: '#',
+    summary: 'Exploitation of Camaleon CMS involving mass assignment (CVE-2025-2304), arbitrary file read via AWS S3 uploader (CVE-2026-1776), credential extraction, S3 pivoting, SSH access and root privilege escalation via misconfigured facter.',
+    stack: ['Rails', 'Camaleon CMS', 'AWS S3', 'SQLite', 'Privilege Escalation'],
+    category: ['Web', 'PrivEsc', 'Cloud', 'Medium'],
+    link: 'https://drive.google.com/file/d/1jlsroWw1rxxCH_YC_SxrAAzJL_mie6LV/view?usp=sharing',
+    image: '/images/Facts.png', // 👈 AGGIUNGI QUESTO
   },
 ]
 
@@ -146,7 +102,7 @@ export const projects = [
     link: 'https://github.com/alessandro-carboni/fuzz-triage-pipeline',
   },
   {
-    title: 'Ghidra Scripts Pack',
+    title: 'Ghidra Scripts Pack with AI',
     subtitle: 'Reverse engineering automation with AI support',
     description: 'A set of scripts aimed at speeding up reverse engineering tasks, pattern extraction, and repetitive analysis activities.',
     tags: ['Ghidra', 'Reverse Engineering', 'Automation'],
@@ -254,6 +210,6 @@ export const footerReferences = [
   },
   {
     title: 'Current Direction',
-    items: ['CTF practice', 'Exploit research', 'Systems security', 'Practical portfolio building'],
+    items: ['CTF practice', 'Exploit research', 'Systems security', 'Bug Hunting'],
   },
 ]

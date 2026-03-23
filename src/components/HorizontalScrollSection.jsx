@@ -1,5 +1,5 @@
 import { useMemo, useState } from 'react'
-import { FaArrowRight, FaFlag, FaLock, FaSkullCrossbones, FaFilter } from 'react-icons/fa'
+import { FaFlag, FaLock, FaSkullCrossbones, FaFilter } from 'react-icons/fa'
 import { writeups, writeupFilters } from '../data/portfolioData'
 import SectionTitle from './SectionTitle'
 
@@ -16,8 +16,8 @@ export default function HorizontalScrollSection() {
       <div className="section-shell">
         <SectionTitle
           eyebrow="CTF Writeups"
-          title="Browse writeups horizontally, without breaking normal page flow."
-          text="The page keeps scrolling vertically as usual. Inside this box, writeups are browsed horizontally through the internal scrollbar or horizontal gestures."
+          title="Selected technical writeups"
+          text="Collection of CTF writeups documenting full exploitation paths, including enumeration, vulnerability discovery, exploitation, and privilege escalation."
         />
 
         <div className="writeup-filter-bar glass-card">
@@ -43,7 +43,13 @@ export default function HorizontalScrollSection() {
         <div className="writeup-scroller-shell glass-card">
           <div className="writeup-scroller">
             {filteredWriteups.map((item) => (
-              <article className="writeup-card glass-card" key={item.title}>
+              <a
+                href={item.link}
+                target="_blank"
+                rel="noreferrer"
+                className="writeup-card glass-card writeup-card--link"
+                key={item.title}
+              >
                 <div className="writeup-card__meta">
                   <span className="pill">
                     <FaFlag />
@@ -56,6 +62,14 @@ export default function HorizontalScrollSection() {
                 </div>
 
                 <div className="writeup-card__title-row">
+                  {item.image && (
+                    <img
+                      src={item.image}
+                      alt={item.title}
+                      className="writeup-card__image"
+                    />
+                  )}
+
                   <span className="writeup-card__icon">
                     <FaLock />
                   </span>
@@ -71,11 +85,7 @@ export default function HorizontalScrollSection() {
                     </span>
                   ))}
                 </div>
-
-                <a href={item.link} className="text-link" target="_blank" rel="noreferrer">
-                  Read writeup <FaArrowRight />
-                </a>
-              </article>
+              </a>
             ))}
           </div>
         </div>

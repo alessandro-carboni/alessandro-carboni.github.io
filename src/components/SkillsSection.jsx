@@ -20,8 +20,8 @@ export default function SkillsSection() {
       <div className="section-shell">
         <SectionTitle
           eyebrow="Expertise"
-          title="A broad stack, but presented with a security-first lens."
-          text="The goal is not to dump keywords. It is to show a coherent technical profile that spans security analysis, systems, networking, web application testing, tooling, and reverse engineering."
+          title="Technical skills and security areas"
+          text="Overview of technologies and domains used in projects and CTF writeups, including web security, systems, and low-level analysis."
         />
 
         <div className="skills-grid">

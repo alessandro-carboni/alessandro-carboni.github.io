@@ -1,4 +1,4 @@
-import { FaArrowRight, FaLaptopCode } from 'react-icons/fa'
+import { FaLaptopCode } from 'react-icons/fa'
 import { projects } from '../data/portfolioData'
 import SectionTitle from './SectionTitle'
 
@@ -8,14 +8,20 @@ export default function ProjectSection() {
       <div className="section-shell">
         <SectionTitle
           eyebrow="Projects"
-          title="Built to demonstrate process, not just interest."
-          text="Projects are also browsed horizontally to keep the reading rhythm consistent with the rest of the portfolio."
+          title="Technical projects and labs"
+          text="Collection of hands-on projects focused on security concepts, including web vulnerabilities, exploitation techniques, and custom tooling."
         />
 
         <div className="project-scroller-shell glass-card">
           <div className="project-scroller">
             {projects.map((project) => (
-              <article className="glass-card project-card project-card--scroller" key={project.title}>
+              <a
+                href={project.link}
+                target="_blank"
+                rel="noreferrer"
+                className="glass-card project-card project-card--scroller project-card--link"
+                key={project.title}
+              >
                 <div className="project-card__header">
                   <span className="project-line" />
                   <span className="project-subtitle">{project.subtitle}</span>
@@ -37,11 +43,7 @@ export default function ProjectSection() {
                     </span>
                   ))}
                 </div>
-
-                <a href={project.link} target="_blank" rel="noreferrer" className="text-link project-card__fake-link">
-                  Explore project <FaArrowRight />
-                </a>
-              </article>
+              </a>
             ))}
           </div>
         </div>
