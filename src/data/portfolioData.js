@@ -82,14 +82,14 @@ export const writeupFilters = ['All', 'Web', 'Pwn', 'Reverse', 'Cloud', 'PrivEsc
 
 export const writeups = [
   {
-    title: 'Facts',
+    title: 'Hack The Box - Facts',
     type: 'Web / PrivEsc / Cloud',
     difficulty: 'Medium',
-    summary: 'Exploitation of Camaleon CMS involving mass assignment (CVE-2025-2304), arbitrary file read via AWS S3 uploader (CVE-2026-1776), credential extraction, S3 pivoting, SSH access and root privilege escalation via misconfigured facter.',
+    summary: 'Exploitation of a Web Page built on Camaleon CMS, credential extraction (CVE-2025-2304), AWS S3 pivoting (CVE-2026-1776), root privilege escalation via misconfigured files.',
     stack: ['Rails', 'Camaleon CMS', 'AWS S3', 'SQLite', 'Privilege Escalation'],
     category: ['Web', 'PrivEsc', 'Cloud', 'Medium'],
     link: 'https://drive.google.com/file/d/1jlsroWw1rxxCH_YC_SxrAAzJL_mie6LV/view?usp=sharing',
-    image: '/images/Facts.png', // 👈 AGGIUNGI QUESTO
+    image: '/images/Facts.png',
   },
 ]
 
