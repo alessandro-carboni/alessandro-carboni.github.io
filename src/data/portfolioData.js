@@ -78,37 +78,51 @@ export const experienceTimeline = [
   },
 ]
 
-export const writeupFilters = ['All', 'Web', 'Pwn', 'Reverse', 'Cloud', 'PrivEsc', 'Medium', 'Hard']
+export const writeupFilters = [
+  'All',
+  'Web',
+  'Pwn',
+  'Reverse',
+  'Cloud',
+  'PrivEsc',
+  'Easy',
+  'Medium',
+  'Hard',
+  'Insane',
+]
 
 export const writeups = [
   {
     title: 'Hack The Box - Principal',
     type: 'Web / JWT / PrivEsc',
     difficulty: 'Medium',
-    summary: 'Compromise Jetty-based platform using a JWE/JWT authentication bypass via exposed JWKS, administrative API abuse, credential disclosure, root privilege escalation by abusing a readable SSH CA private key.',
+    summary:
+      'Compromise a Jetty-based platform using a JWE/JWT authentication bypass via exposed JWKS, administrative API abuse, credential disclosure, and root privilege escalation by abusing a readable SSH CA private key.',
     stack: ['JWE', 'JWKS', 'SSH Certificates', 'Privilege Escalation'],
     category: ['Web', 'JWT', 'PrivEsc', 'Medium'],
-    link: 'https://github.com/alessandro-carboni/CTF-Writeups/tree/main/Principal/principal.md',
+    link: 'https://github.com/alessandro-carboni/CTF-Writeups/blob/main/Principal/principal.md',
     image: '/images/Principal.png',
   },
   {
     title: 'Hack The Box - Facts',
     type: 'Web / PrivEsc / Cloud',
-    difficulty: 'Medium',
-    summary: 'Exploitation of a Web Page built on Camaleon CMS | credential extraction (CVE-2025-2304) | AWS S3 pivoting (CVE-2026-1776) | root privilege escalation via misconfigured files',
+    difficulty: 'Easy',
+    summary:
+      'Exploitation of a web application built on Camaleon CMS, including credential extraction (CVE-2025-2304), AWS S3 pivoting (CVE-2026-1776), and root privilege escalation via misconfigured files.',
     stack: ['Rails', 'Camaleon CMS', 'AWS S3', 'SQLite', 'Privilege Escalation'],
     category: ['Web', 'PrivEsc', 'Cloud', 'Medium'],
-    link: 'https://github.com/alessandro-carboni/CTF-Writeups/tree/main/Facts/facts.md',
+    link: 'https://github.com/alessandro-carboni/CTF-Writeups/blob/main/Facts/facts.md',
     image: '/images/Facts.png',
   },
   {
     title: 'Hack The Box - CCTV',
     type: 'Web / Authenticated Exploitation / PrivEsc',
     difficulty: 'Easy',
-    summary: 'End-to-end exploitation of a surveillance platform, authenticated SQL injection, database exfiltration, credential cracking, lateral movement via SSH, root access through command injection in an internal motionEye service.',
+    summary:
+      'Exploitation of a platform through authenticated SQL injection, database exfiltration, credential cracking, SSH lateral movement, and root access through command injection in an internal motionEye service.',
     stack: ['Apache', 'ZoneMinder', 'MySQL', 'motionEye', 'SSH', 'Linux'],
     category: ['Web', 'SQLi', 'PrivEsc', 'Easy'],
-    link: 'https://github.com/alessandro-carboni/CTF-Writeups/tree/main/CCTV/cctv.md',
+    link: 'https://github.com/alessandro-carboni/CTF-Writeups/blob/main/CCTV/cctv.md',
     image: '/images/Cctv.png',
   },
 ]
@@ -233,3 +247,40 @@ export const footerReferences = [
     items: ['CTF practice', 'Exploit research', 'Systems security', 'Bug Hunting'],
   },
 ]
+
+export const getDifficultyStyles = (difficulty) => {
+  const normalizedDifficulty = String(difficulty || '').toLowerCase()
+
+  switch (normalizedDifficulty) {
+    case 'easy':
+      return {
+        text: 'text-green-700',
+        icon: 'text-green-600',
+        badge: 'bg-green-100/80 border border-green-200 text-green-700',
+      }
+    case 'medium':
+      return {
+        text: 'text-orange-600',
+        icon: 'text-orange-500',
+        badge: 'bg-orange-100/80 border border-orange-200 text-orange-700',
+      }
+    case 'hard':
+      return {
+        text: 'text-red-700',
+        icon: 'text-red-600',
+        badge: 'bg-red-100/80 border border-red-200 text-red-700',
+      }
+    case 'insane':
+      return {
+        text: 'text-violet-700',
+        icon: 'text-violet-600',
+        badge: 'bg-violet-100/80 border border-violet-200 text-violet-700',
+      }
+    default:
+      return {
+        text: 'text-slate-600',
+        icon: 'text-slate-500',
+        badge: 'bg-slate-100/80 border border-slate-200 text-slate-600',
+      }
+  }
+}
