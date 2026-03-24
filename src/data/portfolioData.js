@@ -80,11 +80,6 @@ export const experienceTimeline = [
 
 export const writeupFilters = [
   'All',
-  'Web',
-  'Pwn',
-  'Reverse',
-  'Cloud',
-  'PrivEsc',
   'Easy',
   'Medium',
   'Hard',
@@ -99,7 +94,7 @@ export const writeups = [
     summary:
       'Compromise a Jetty-based platform using a JWE/JWT authentication bypass via exposed JWKS, administrative API abuse, credential disclosure, and root privilege escalation by abusing a readable SSH CA private key.',
     stack: ['JWE', 'JWKS', 'SSH Certificates', 'Privilege Escalation'],
-    category: ['Web', 'JWT', 'PrivEsc', 'Medium'],
+    category: ['Medium'],
     link: 'https://github.com/alessandro-carboni/CTF-Writeups/blob/main/Principal/principal.md',
     image: '/images/Principal.png',
   },
@@ -110,7 +105,7 @@ export const writeups = [
     summary:
       'Exploitation of a web application built on Camaleon CMS, including credential extraction (CVE-2025-2304), AWS S3 pivoting (CVE-2026-1776), and root privilege escalation via misconfigured files.',
     stack: ['Rails', 'Camaleon CMS', 'AWS S3', 'SQLite', 'Privilege Escalation'],
-    category: ['Web', 'PrivEsc', 'Cloud', 'Medium'],
+    category: ['Easy'],
     link: 'https://github.com/alessandro-carboni/CTF-Writeups/blob/main/Facts/facts.md',
     image: '/images/Facts.png',
   },
@@ -121,7 +116,7 @@ export const writeups = [
     summary:
       'Exploitation of a platform through authenticated SQL injection, database exfiltration, credential cracking, SSH lateral movement, and root access through command injection in an internal motionEye service.',
     stack: ['Apache', 'ZoneMinder', 'MySQL', 'motionEye', 'SSH', 'Linux'],
-    category: ['Web', 'SQLi', 'PrivEsc', 'Easy'],
+    category: ['Easy'],
     link: 'https://github.com/alessandro-carboni/CTF-Writeups/blob/main/CCTV/cctv.md',
     image: '/images/Cctv.png',
   },
