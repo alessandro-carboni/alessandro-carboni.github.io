@@ -66,7 +66,7 @@ export default function HorizontalScrollSection() {
                           item.difficulty === 'Easy'
                             ? '#15803d'
                             : item.difficulty === 'Medium'
-                            ? '#c2410c'
+                            ? '#cea100'
                             : item.difficulty === 'Hard'
                             ? '#b91c1c'
                             : item.difficulty === 'Insane'

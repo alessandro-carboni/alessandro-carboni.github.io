@@ -80,6 +80,7 @@ export const experienceTimeline = [
 
 export const writeupFilters = [
   'All',
+  'Malware Analysis',
   'Easy',
   'Medium',
   'Hard',
@@ -88,12 +89,23 @@ export const writeupFilters = [
 
 export const writeups = [
   {
+    title: 'Hack The Box - Snapped',
+    type: 'Web / API Abuse / PrivEsc',
+    difficulty: 'Hard',
+    summary:
+      'Compromise Nginx UI through unauthenticated backup disclosure (CVE-2026-27944), abuse broken access control in backend API, escalate to root via a snapd sandbox escape (CVE-2026-3888).',
+    stack: ['Nginx UI', 'JWT', 'SQLite', 'SSH', 'snapd', 'Linux'],
+    category: ['Hard'],
+    link: 'https://github.com/alessandro-carboni/CTF-Writeups/blob/main/Snapped/Snapped.md',
+    image: '/images/Snapped.png',
+  },
+  {
     title: 'Hack The Box - Principal',
     type: 'Web / JWT / PrivEsc',
     difficulty: 'Medium',
     summary:
       'Compromise a Jetty-based platform using a JWE/JWT authentication bypass via exposed JWKS, administrative API abuse, credential disclosure, and root privilege escalation by abusing a readable SSH CA private key.',
-    stack: ['JWE', 'JWKS', 'SSH Certificates', 'Privilege Escalation'],
+    stack: ['JWE', 'JWKS', 'SSH Certificates', 'Privilege Escalation', 'Linux'],
     category: ['Medium'],
     link: 'https://github.com/alessandro-carboni/CTF-Writeups/blob/main/Principal/principal.md',
     image: '/images/Principal.png',
@@ -104,7 +116,7 @@ export const writeups = [
     difficulty: 'Easy',
     summary:
       'Exploitation of a web application built on Camaleon CMS, including credential extraction (CVE-2025-2304), AWS S3 pivoting (CVE-2026-1776), and root privilege escalation via misconfigured files.',
-    stack: ['Rails', 'Camaleon CMS', 'AWS S3', 'SQLite', 'Privilege Escalation'],
+    stack: ['Rails', 'Camaleon CMS', 'AWS S3', 'SQLite', 'Privilege Escalation', 'Linux'],
     category: ['Easy'],
     link: 'https://github.com/alessandro-carboni/CTF-Writeups/blob/main/Facts/facts.md',
     image: '/images/Facts.png',
