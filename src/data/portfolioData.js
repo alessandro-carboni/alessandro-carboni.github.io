@@ -143,18 +143,18 @@ export const projects = [
     link: 'https://github.com/alessandro-carboni/ghidra-scripts-pack',
   },
   {
-    title: 'CTF VM Development',
-    subtitle: 'Exploit chains and privilege escalation paths',
-    description: 'Creation of intentionally vulnerable environments designed to teach exploitation logic, chaining, and realistic post-exploitation reasoning.',
-    tags: ['CTF', 'PrivEsc', 'Lab Design'],
-    link: 'https://github.com/alessandro-carboni/EH-VM',
-  },
-  {
     title: 'Cloud Misconfiguration Lab',
     subtitle: 'Attack & detection',
     description: 'Security lab focused on cloud exposure, weak permissions, and the balance between attack simulation and detection opportunities.',
     tags: ['Cloud', 'Detection', 'Security'],
     link: '#',
+  },
+  {
+    title: 'Secure File Sharing Protocol',
+    subtitle: 'Distributed Systems project',
+    description: 'Protocol-oriented project exploring communication, reliability, and secure exchange in a distributed setting.',
+    tags: ['Distributed Systems', 'Protocols', 'Secure Design'],
+    link: 'https://github.com/SoftwareDistribuitUB-2026/practica-1-c15',
   },
   {
     title: 'Threat Modeling Lab',
@@ -164,11 +164,11 @@ export const projects = [
     link: '#',
   },
   {
-    title: 'Secure File Sharing Protocol',
-    subtitle: 'Distributed Systems project',
-    description: 'Protocol-oriented project exploring communication, reliability, and secure exchange in a distributed setting.',
-    tags: ['Distributed Systems', 'Protocols', 'Secure Design'],
-    link: 'https://github.com/SoftwareDistribuitUB-2026/practica-1-c15',
+    title: 'CTF VM Development',
+    subtitle: 'Exploit chains and privilege escalation paths',
+    description: 'Creation of intentionally vulnerable environments designed to teach exploitation logic, chaining, and realistic post-exploitation reasoning.',
+    tags: ['CTF', 'PrivEsc', 'Lab Design'],
+    link: 'https://github.com/alessandro-carboni/EH-VM',
   },
 ]
 
